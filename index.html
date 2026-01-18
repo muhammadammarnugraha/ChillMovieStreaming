@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chill Streaming Movie</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/login.css">
+</head>
+<body>
+    <main>
+        <form class="card-container" action="#">
+            <img class="mini-logo" src="images/logo.png" alt="mini-logo">
+        
+            <div class="card-title">
+                <p id="masuk">Masuk</p>
+                <p>Selamat Datang Kembali!</p>
+            </div>
+        
+            <div class="card-form">
+                <label class="form-label" for="username">Username</label>
+                <input class="form-input" type="text" name="username" placeholder="Masukkan username"/>
+            </div>
+        
+            <div class="card-form">
+                <label class="form-label" for="password">Kata Sandi</label>
+                <input class="form-input" type="text" name="password" placeholder="Masukkan kata sandi"/>
+                <img class="password-icon" src="images/eye-off.png" alt="ikon mata">
+                <div class="form-footer">
+                    <p class="gray-font">Belum Punya Akun? <a class="unanchor" href="./pages/register.html">Daftar</a></p>
+                    <a class="unanchor" href="#">Lupa Kata Sandi?</a>
+                </div>
+            </div>
+    
+            <div class="card-form">
+                <button class="form-button card-form form-input gray-background" type="button" onclick="location.href='./pages/home.html'">Masuk</button>
+                <p id="atau" class="gray-font">Atau</p>
+                <button class="form-button card-form form-input">
+                <img id="google" src="images/google.png" alt="Google">
+                <p>Masuk dengan Google</p>
+                </button>
+            </div>   
+        </form>
+    </main>
+    
+</body>
+</html>
+

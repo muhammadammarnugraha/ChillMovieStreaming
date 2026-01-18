@@ -1,0 +1,279 @@
+@import url('style.css');
+
+body{
+    background-image: url('/images/Cinema Bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container{
+    min-width: 306px;
+    max-width: 529px;
+    min-height: 384px;
+    max-height: 663px;
+    background-color: #181A1CD6;
+    border-radius: 8px;
+    padding: 23px 24px;
+    margin: 80px 27px 153px 27px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.mini-logo{
+    width: 94px;
+    height: 24px;
+}
+
+.card-title{
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#masuk{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#atau{
+    text-align: center;
+    margin: 4px 10px;
+    font-weight: 500;
+}
+
+#google{
+    margin-right: 12px;
+    width: 10px;
+    height: 10px;
+}
+
+.form-label{
+    size: 18px;
+    font-size: 10px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.form-input{
+    size: 28px;
+    font-size: 9px;
+    display: block;
+    border-radius: 12px;
+    border-style: ridge;
+    border-width: 0.1mm;
+    background-color: transparent;
+    padding: 8px 12px;
+    font-weight: 400;
+    width: 100%;
+    color: rgb(90, 86, 86);
+    border-color: #E7E3FC3B;
+    transition: 0.5s;
+}
+
+.form-input:hover{
+    background-color: rgb(44, 44, 44);
+}
+
+.card-form{
+    width: 100%;
+    position: relative;
+    font-size: 10px;
+}
+
+.password-icon{
+    position: absolute;
+    left: 235px;
+    bottom: 27px;
+    height: 12px;
+    width: 12px;
+    cursor: pointer;
+}
+
+.form-footer{
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7px;
+    margin-right: 8px;
+    font-size: 10px;
+    letter-spacing: 0.2px;
+}
+
+.form-button{
+    width: 100%;
+    border-radius: 12px;
+    background-color: transparent;
+    padding: 7px 12px;
+    font-weight: 400; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+}
+
+.gray-font{
+    color: #C1C2C4;
+}
+
+.gray-background{
+    background-color: #3D4142;
+}
+
+.unanchor{
+    text-decoration: none;
+    color: white;
+}
+
+@media screen and (min-width:1024px) {
+
+body{
+    background-image: url('/images/Cinema Bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container{
+    width: 529px;
+    height: 663px;
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    gap:37px;
+    margin: 181px 455px 180px 456px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.mini-logo{
+    width: 163px;
+    height: 44px;
+}
+
+.card-title{
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#masuk{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+#atau{
+    font-size: 14px;
+    text-align: center;
+    margin: 8px 10px;
+    font-weight: 500;
+}
+
+#google{
+    margin-right: 20px;
+    width: 18px;
+    height: 18px;
+}
+
+.form-label{
+    size: 18px;
+    font-size: 18px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-input{
+    size: 28px;
+    font-size: 16px;
+    display: block;
+    border-radius: 24px;
+    border-style: ridge;
+    border-width: 0.1mm;
+    background-color: transparent;
+    padding: 14px 20px;
+    font-weight: 400;
+    width: 100%;
+    color: white;
+    border-color: #E7E3FC3B;
+}
+
+.card-form{
+    width: 100%;
+    position: relative;
+    font-size: 18px;
+}
+
+.password-icon{
+    position: absolute;
+    left: 415px;
+    bottom: 45px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.form-footer{
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+}
+
+.form-button{
+    width: 100%;
+    border-radius: 12px;
+    background-color: transparent;
+    padding: 14px 12px;
+    font-weight: 400; 
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+}
+
+.gray-font{
+    color: #C1C2C4;
+}
+
+.gray-background{
+    background-color: #3D4142;
+}
+
+.unanchor{
+    text-decoration: none;
+    color: white;
+}
+}
