@@ -8,6 +8,7 @@ import './index.css'
 import Register from './assets/Pages/Register.jsx'
 import Login from './assets/Pages/Login.jsx'
 import Home from './assets/Pages/Home.jsx'
+import DaftarSaya from './assets/Pages/DaftarSaya.jsx';
 
 // createRoot(document.getElementById('root')).render(
 //   <StrictMode>
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home/>,
+  },
+  {
+    path: "/home/daftarSaya",
+    element: <DaftarSaya/>,
   },
 ]);
 
