@@ -4,14 +4,14 @@ import Label from "../Atoms/Label";
 import Button from "../Atoms/Button";
 import Information from "../Images/logoInformation.png";
 import Volume from "../Images/logoVolume.png";
+import Video from "../Videos/DutyAfterSchool_trailer.mp4"
 
 const Hero = () => {
   return (
     <div className="flex justify-center relative w-full h-[225px] lg:h-[587px] text-left mb-[20px]">
-      <div
-        className="mask-b-from-20% w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${Duty})` }}
-      ></div>
+      <video className="mask-b-from-20% w-full h-auto object-cover" autoPlay muted loop>
+        <source src={Video} type="video/mp4" />
+      </video>
       <div className="absolute bottom-0 pb-[40px] flex justify-center">
         <div className="flex flex-col items-start h-[118px] w-[320px] gap-[12px] lg:h-[233px] lg:w-[90%] lg:gap-[40px]">
           <Label

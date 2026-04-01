@@ -3,7 +3,9 @@ import DaftarSayaTemplates from '../Templates/DaftarSayaTemplates.jsx'
 
 const DaftarSaya = () => {
   return (
-    <DaftarSayaTemplates/>
+    <div className='bg-[#181A1C]'>
+      <DaftarSayaTemplates/>
+    </div>
   )
 }
 

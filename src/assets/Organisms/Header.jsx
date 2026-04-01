@@ -5,27 +5,34 @@ import Label from "../Atoms/Label";
 import Button from "../Atoms/Button";
 import Drop from "../Images/logoDropDown.png";
 import User from "../Images/logoUser.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="sticky top-0 bg-[#181A1C] z-[2]">
       <div className="flex justify-between py-[6px] px-[20px] lg:py-[25px] lg:px-[80px] lg:text-[18px]">
         <div className="flex items-center gap-[12px] lg:gap-[20px] ">
-          <div className="flex gap-[6.46px]">
-            <img
-              src={Clip}
-              alt="headerLogoClip"
-              className="flex w-[17.02px] h-[14.86px] lg:w-[29.55px] lg:h-[35px]"
-            />
-            <img
-              src={Chill}
-              alt="headerLogoChill"
-              className=" w-[70px] h-[35px] hidden lg:flex"
-            />
-          </div>
+          <Link to={"/home"}>
+            <button>
+              <div className="flex gap-[6.46px]">
+                <img
+                  src={Clip}
+                  alt="headerLogoClip"
+                  className="flex w-[17.02px] h-[14.86px] lg:w-[29.55px] lg:h-[35px]"
+                />
+                <img
+                  src={Chill}
+                  alt="headerLogoChill"
+                  className=" w-[70px] h-[35px] hidden lg:flex"
+                />
+              </div>
+            </button>
+          </Link>
           <Button isi={"Series"} />
           <Button isi={"Film"} />
-          <Button isi={"Daftar Saya"} />
+          <Link to={"/home/daftarSaya"} className="no-underline text-inherit hover:no-underline hover:text-inherit">
+            <Button isi={"Daftar Saya"} />
+          </Link >
           <Button className={"flex flex-row items-center"}>
             <span>Genre</span>
             <img src={Drop} alt="dropDown" className="size-[16px] lg:hidden" />

@@ -20,7 +20,9 @@ const Poster = ({
 }) => {
   const total = moveLeft + moveRight;
   const [active, setActive] = useState("");
-  let storage =[]
+ 
+  
+
   return (
     <div className={className}>
       {daftarFilm.map((film) => (
@@ -39,7 +41,7 @@ const Poster = ({
           >
             {isHover ? (
               <div
-                className={`bg-[#181A1C] delay-800 duration-300 ${film.id === active ? "scale-100 opacity-100" : "scale-0 opacity-50"}`}
+                className={`bg-[#181A1C] delay-800 duration-300 ${film.id === active ? "scale-100 opacity-100" : "scale-0 opacity-50"} rounded-b-[20px]`}
                 onClick={(event) => {
                   event.stopPropagation();
                 }}
@@ -48,11 +50,11 @@ const Poster = ({
                   <img
                     src={film.imageH}
                     alt="Poster Film"
-                    className={`h-[255px] object-fill relative rounded-t-[20px]`}
+                    className={`h-[255px] relative rounded-t-[20px] flex-shrink-0 `}
                   />
-                  <div className="flex flex-col items-center justify-center self-center gap-[17px] align-center h-full w-[350px]">
+                  <div className="flex flex-col items-center justify-center self-center gap-[17px] align-center h-full w-[350px] ">
                     <div className="flex flex-row w-full justify-between">
-                      <div className="flex flex-row gap-[16px]">
+                      <div className="flex flex-row gap-[16px] ">
                         <Button
                           isi={<img src={Play} alt="PlayMovie" />}
                           className={"size-[54px]"}
@@ -69,14 +71,18 @@ const Poster = ({
                             "size-[54px] flex justify-center items-center border-solid border-[#9D9EA1] border-[1.21px] rounded-[30px]"
                           }
                           onClick={()=>{
-                            storage.push(film.judul)
-                            console.log(storage)
-                            console.log(typeof storage)
-                            console.log(typeof JSON.stringify(storage))
-                            // localStorage.setItem("storage",storage)
-                            // console.log(typeof localStorage.getItem("storage"))
-                            // localStorage.setItem("storage",storage)
-                            // console.log(localStorage.getItem("storage"))
+                            let storage = localStorage.getItem("data") || [];
+                            storage = typeof storage == "string" ?JSON.parse(storage):[];
+                            storage.push(
+                              {
+                                id: film.id,
+                                image: film.image,
+                                imageH: film.imageH,
+                                rating: film.rating
+                              }
+                            )
+                            storage = JSON.stringify(storage)
+                            localStorage.setItem("data", storage)
                           }} 
                         />
                       </div>
@@ -109,21 +115,21 @@ const Poster = ({
               </div>
             ) : (
               <div
-                className={`${film.id !== active ? "pointer-events-none" : "pointer-events-none"}`}
+                className={"pointer-events-none"}
               >
                 <img
-                  src={film.image}
+                  src={film.isDark?film.imageH:film.image}
                   alt="Poster Film"
-                  className={
-                    film.isDark
-                      ? "mask-b-from-70% w-[302px] h-[162px]"
-                      : "w-[234px] h-[365px]"
+                  className={`rounded-[8px] ${film.isDark
+                      ? "mask-b-from-30% w-[302px] h-[162px]"
+                      : "w-[234px] h-[365px]"}`
+                    
                   }
                 />
                 {cardForm == "horizontal" ? (
-                  <div className="size-full items-end flex justify-between absolute top-0">
+                  <div className="size-full items-end flex justify-between absolute top-0 pb-[16px] px-[16px]">
                     <p className="text-[14px] font-[700]">{film.judul}</p>
-                    <div className="flex items-center gap-[2.5px]">
+                    <div className="flex items-center gap-[2.5px] ">
                       {film.isStar ? (
                         <img className="size-[12px]" src={Star} alt="Star" />
                       ) : (
@@ -137,14 +143,14 @@ const Poster = ({
                     {film.isNewEp == true ? (
                       <Label
                         className={
-                          "text-[5.74px] lg:text-[14px] ml-[7.65px] mt-[7.65px] bg-[#0F1E93] rounded-[24px] w-[44.5px] h-[14px] lg:w-[104px] lg:h-[28px] lg:px-[10px] lg:py-[4px]"
+                          "flex justify-center items-center text-[5.74px] lg:text-[14px] ml-[7.65px] mt-[7.65px] bg-[#0F1E93] rounded-[24px] w-[44.5px] h-[14px] lg:w-[104px] lg:h-[28px] lg:px-[10px] lg:py-[4px]"
                         }
                         isi={"Episode Baru"}
                       />
                     ) : film.isPrem == true ? (
                       <Label
                         className={
-                          "text-[5.74px] lg:text-[14px] ml-[7.65px] mt-[7.65px] bg-[#B7A207] rounded-[24px] w-[44.5px] h-[14px]  lg:w-[104px] lg:h-[28px] lg:px-[10px] lg:py-[4px]"
+                          "flex justify-center items-center text-[5.74px] lg:text-[14px] ml-[7.65px] mt-[7.65px] bg-[#B7A207] rounded-[24px] w-[44.5px] h-[14px]  lg:w-[104px] lg:h-[28px] lg:px-[10px] lg:py-[4px]"
                         }
                         isi={"Premium"}
                       />
@@ -154,7 +160,7 @@ const Poster = ({
                     {film.isTop == true ? (
                       <Label
                         className={
-                          "text-[6.69px] lg:text-[14px] mr-[6px] bg-[#B71F1D] w-[16px] h-[30px] tracking-[0.1px] font[400] rounded-tr-[5px] rounded-bl-[5px] lg:w-[31px] lg:h-[44px] lg:p-[5px]"
+                          "flex justify-center items-center text-[6.69px] lg:text-[14px] mr-[6px] bg-[#B71F1D] w-[16px] h-[30px] tracking-[0.1px] font[400] rounded-tr-[5px] rounded-bl-[5px] lg:w-[31px] lg:h-[44px] lg:p-[5px]"
                         }
                         isi={"Top 10"}
                       />

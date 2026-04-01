@@ -3,7 +3,6 @@ import Card from "../Molecules/Card";
 import Label from "../Atoms/Label";
 import Left from "../Images/slideLeft.png";
 import Right from "../Images/slideRight.png";
-import HoverPoster from "../Atoms/HoverPoster";
 
 const Carrousel = ({ title, isHorizontal, line }) => {
   let sizeCard = "";
@@ -47,7 +46,7 @@ const Carrousel = ({ title, isHorizontal, line }) => {
           <Label
             isi={title}
             className={
-              "self-start text-left text-[20px] font[700] py-[20px] lg:text-[32px] lg:py-[40px]"
+              "text-[20px] font[700] py-[20px] lg:text-[32px] lg:py-[40px] w-[1280px] flex"
             }
           />
 

@@ -11,9 +11,9 @@ const HomeTemplates = () => {
       <Hero />
       <Carrousel title={"Melanjutkan Tonton Film"} isHorizontal={true}/>
       <Carrousel title={"Top Rating Film dan Series Hari ini"} isHorizontal={false} line={1}/>
-      <Carrousel title={"Top Rating Film dan Series Hari ini"} isHorizontal={false} line={2}/>
-      <Carrousel title={"Top Rating Film dan Series Hari ini"} isHorizontal={false} line={3}/>
-      <Carrousel title={"Top Rating Film dan Series Hari ini"} isHorizontal={false} line={4}/>
+      <Carrousel title={"Film Trending"} isHorizontal={false} line={2}/>
+      <Carrousel title={"Rilis Baru"} isHorizontal={false} line={3}/>
+      <Carrousel title={"Film Persembahan Chill"} isHorizontal={false} line={4}/>
       <Footer/>
     </div>
   );
