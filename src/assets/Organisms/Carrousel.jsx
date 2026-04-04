@@ -32,7 +32,7 @@ const Carrousel = ({ title, isHorizontal, line }) => {
           }
         />
         <Card
-          className={`flex flex-row w-full  ${sizeCard} rounded-l-[6px] absolute overflow-y-visible overflow-x-scroll gap-[16px]`}
+          className={`flex flex-row w-full  ${sizeCard} rounded-l-[6px] pr-[60px] absolute overflow-y-visible overflow-x-scroll no-scrollbar gap-[16px]`}
           cardForm={isHorizontal ? "horizontal" : "vertical"}
           sizeCard={sizeCard}
           line={line}
@@ -77,7 +77,7 @@ const Carrousel = ({ title, isHorizontal, line }) => {
               <img src={Right} alt="" />
             </button>
             <Card
-              className={`static flex justify-start flex-row w-full rounded-l-[6px] ${isHorizontal ? "gap-[24px]" : "gap-[28px]"}  overflow-x-clip overflow-y-visible`}
+              className={`static flex justify-start flex-row w-full rounded-l-[6px] ${isHorizontal ? "gap-[24px]" : "gap-[28px]"}  overflow-x-hidden overflow-y-visible`}
               cardForm={isHorizontal ? "horizontal" : "vertical"}
               sizeCard={sizeCard}
               line={line}
@@ -91,7 +91,7 @@ const Carrousel = ({ title, isHorizontal, line }) => {
             className={`top-[94px] absolute ${showPop} w-[1280px] ${isHorizontal ? "h-[162px]" : "h-[365px]"} justify-center items-center overflow-visible`}
           >
             <Card
-              className={`relative ${showPop} justify-start flex-row w-full z-[1] ${isHorizontal ? "gap-[24px]" : "gap-[28px]"}`}
+              className={`relative ${showPop} justify-start flex-row w-full z-[10000] ${isHorizontal ? "gap-[24px] " : "gap-[28px]"}`}
               cardForm={isHorizontal ? "horizontal" : "vertical"}
               sizeCard={sizeCard}
               line={line}

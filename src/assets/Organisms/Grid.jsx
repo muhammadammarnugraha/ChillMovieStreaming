@@ -33,7 +33,6 @@ const Grid = () => {
               onClick={
                 (e) => {
                   setHovered((film.id = null))
-                  e.stopPropagation();
                   console.log("masuk")
               }
                 }
@@ -45,7 +44,9 @@ const Grid = () => {
                 alt="gambarHorizontal"
                 className="rounded-t-[20px] flex justify-center items-center w-[280px] h-[150px] min-[1440px]:w-[408px] min-[1440px]:h-[255px] shrink-0"
               />
-              <div className="flex flex-col items-center justify-center self-center gap-[17px] align-center w-[280px] min-[1440px]:size-full  rounded-b-[20px] bg-[#181A1C] p-[30px]">
+              <div className="flex flex-col items-center justify-center self-center gap-[17px] align-center w-[280px] min-[1440px]:size-full  rounded-b-[20px] bg-[#181A1C] p-[30px]"
+                onClick={(e) => (e.stopPropagation())}
+              >
                 <div className="flex flex-row w-full justify-between">
                   <div className="flex flex-row gap-[16px] justify-center items-center">
                     <Button

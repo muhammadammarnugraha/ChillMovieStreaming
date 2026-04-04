@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 bg-[#181A1C] z-[2]">
+    <header className="sticky top-0 bg-[#181A1C] min-[1440px]:z-[20000] z-[10]">
       <div className="flex justify-between py-[6px] px-[20px] lg:py-[25px] lg:px-[80px] lg:text-[18px]">
         <div className="flex items-center gap-[12px] lg:gap-[20px] ">
           <Link to={"/home"}>

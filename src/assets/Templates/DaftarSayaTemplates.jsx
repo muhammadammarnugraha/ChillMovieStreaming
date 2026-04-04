@@ -9,7 +9,7 @@ import DaftarSaya from "../Pages/DaftarSaya";
 
 const DaftarSayaTemplates = () => {
   return (
-    <div className="relative w-[100%] h-[100%] min-w-[320px] min-h-[1476px] lg:w-[100%] lg:h-[100%] lg:min-w-[1024px] lg:min-h-[3324px] max-w-none max-h-[3324px]">
+    <div className="relative w-[100%] min-w-[320px] min-h-fit lg:min-w-[1440px] max-w-none max-h-[3324px]">
       <Header/>
       <Label isi={"Daftar Saya"} className={"text-[20px] min-[1440px]:text-[32px] text-[700] text-left mt-[20px] min-[1440px]:mt-[80px] mb-[16px] min-[1440px]:mb-[32px] w-[320.18px] min-[1440px]:w-[1280px] flex justify-start justify-self-center"}/>
       <Grid/>

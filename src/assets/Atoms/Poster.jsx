@@ -30,7 +30,7 @@ const Poster = ({
           <div
             key={film.id}
             style={total >= 0 ? { translate: 0 } : { translate: `${total}px` }}
-            className={`relative flex justify-center items-center pointer-events-auto ${sizeCard} ${
+            className={`relative flex justify-center items-center ${film.id===active?"z-[1000]":"z-[0]"} ${sizeCard} ${
               isHorizontal
                 ? "w-[309px] min-[1440px]:w-[302px]"
                 : "min-[1440px]:w-[234px]"
@@ -49,9 +49,10 @@ const Poster = ({
               <div
                 className={`bg-[#181A1C] delay-800 duration-300 ${
                   film.id === active
-                    ? "scale-100 opacity-100 pointer-events-auto"
-                    : "scale-0 opacity-0 pointer-events-none"
+                    ? "scale-100 opacity-100 pointer-events-auto z-[1000]"
+                    : "scale-0 opacity-50 pointer-events-none"
                 } rounded-[20px]`}
+                onClick={(e) => (e.stopPropagation())}
               >
                 <div className="flex flex-col h-[460px] w-[408px] rounded-[20px] shadow-[0px_19.43px_48.57px_0px_rgba(255,255,255,0.04)]">
                   <img
@@ -130,7 +131,7 @@ const Poster = ({
                     alt="Poster Film"
                     className={`rounded-[8px] ${
                       film.isDark
-                        ? "mask-b-from-30% w-[309px] h-[162px]"
+                        ? "mask-b-from-30% w-[309px] h-[151px] min-[1440px]:w-[302px] min-[1440px]:h-[162px]"
                         : "w-[95px] h-[145px] min-[1440px]:w-[234px] min-[1440px]:h-[365px]"
                     }`}
                   />
@@ -171,7 +172,7 @@ const Poster = ({
                   )}
                 </div>
                 {active === film.id && popUp == true && (
-                  <div className="bg-[#181A1C]/80 fixed flex items-center justify-center inset-0 z-[100] h-[100vh] w-[100vw] rounded-[6px]">
+                  <div className="bg-[#181A1C]/80 fixed flex items-center justify-center inset-0 z-[100] h-[100vh] w-[100vw] rounded-[6px] ">
                     <div className="relative w-[320px] h-auto bg-[#181A1C] rounded-[16px]">
                       <div className="flex flex-row absolute h-[190px] w-full">
                           <Button
@@ -236,7 +237,7 @@ const Poster = ({
                         alt="film popUp"
                         className="w-full h-[190px] object-fill rounded-t-[6px]"
                       />
-                      <div className="flex flex-col gap-[16px] px-[20px] py-[10px]">
+                      <div className="flex flex-col gap-[16px] px-[20px] py-[10px] ">
                         <div className="flex flex-col gap-[8px]">
                           <div className="flex gap-[5.5px] font-[600] items-center justify-start">
                             <Label isi={"2023"} />
