@@ -6,7 +6,7 @@ import Footer from "../Organisms/Footer";
 
 const HomeTemplates = () => {
   return (
-    <div className="relative w-[100%] min-w-[320px] min-h-fit lg:w-[100%] lg:h-[100%] lg:min-w-[1024px] max-w-none max-h-[3324px]">
+    <div className="relative w-[100%] min-w-[320px] min-h-[100%] lg:w-[100%] lg:h-[100%] lg:min-w-[1024px] max-w-none max-h-[100%]">
       <Header />
       <Hero />
       <Carrousel title={"Melanjutkan Tonton Film"} isHorizontal={true}/>

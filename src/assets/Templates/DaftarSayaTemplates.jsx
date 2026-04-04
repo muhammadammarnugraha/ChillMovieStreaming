@@ -3,17 +3,26 @@ import Header from "../Organisms/Header";
 import Hero from "../Organisms/Hero";
 import Carrousel from "../Organisms/Carrousel";
 import Footer from "../Organisms/Footer";
-import Grid from "../Organisms/Grid"
-import Label from "../Atoms/Label"
+import Grid from "../Organisms/Grid";
+import Label from "../Atoms/Label";
 import DaftarSaya from "../Pages/DaftarSaya";
 
 const DaftarSayaTemplates = () => {
   return (
-    <div className="relative w-[100%] min-w-[320px] min-h-fit lg:min-w-[1440px] max-w-none max-h-[3324px]">
-      <Header/>
-      <Label isi={"Daftar Saya"} className={"text-[20px] min-[1440px]:text-[32px] text-[700] text-left mt-[20px] min-[1440px]:mt-[80px] mb-[16px] min-[1440px]:mb-[32px] w-[320.18px] min-[1440px]:w-[1280px] flex justify-start justify-self-center"}/>
-      <Grid/>
-      <Footer/>
+    <div className="relative w-[100%] h-[100%] min-w-[320px] min-h-[100vh] lg:w-[100%] lg:min-w-[1024px] flex flex-col justify-between">
+      <div>
+        <Header />
+        <Label
+          isi={"Daftar Saya"}
+          className={
+            "text-[20px] min-[1440px]:text-[32px] text-[700] text-left mt-[20px] min-[1440px]:mt-[80px] mb-[16px] min-[1440px]:mb-[32px] w-[320.18px] min-[1440px]:w-[1280px] flex justify-start justify-self-center"
+          }
+        />
+        <Grid />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
