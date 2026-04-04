@@ -13,7 +13,7 @@ const Header = () => {
       <div className="flex justify-between py-[6px] px-[20px] lg:py-[25px] lg:px-[80px] lg:text-[18px]">
         <div className="flex items-center gap-[12px] lg:gap-[20px] ">
           <Link to={"/home"}>
-            <button>
+            <button className="cursor-pointer no-underline text-inherit hover:no-underline hover:text-inherit">
               <div className="flex gap-[6.46px]">
                 <img
                   src={Clip}
@@ -30,8 +30,8 @@ const Header = () => {
           </Link>
           <Button isi={"Series"} />
           <Button isi={"Film"} />
-          <Link to={"/home/daftarSaya"} className="no-underline text-inherit hover:no-underline hover:text-inherit">
-            <Button isi={"Daftar Saya"} />
+          <Link to={"/home/daftarSaya"} className="cursor-pointer ">
+            <Button isi={"Daftar Saya"} className={"cursor-pointer no-underline text-inherit hover:no-underline hover:text-inherit"}/>
           </Link >
           <Button className={"flex flex-row items-center"}>
             <span>Genre</span>

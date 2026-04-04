@@ -49,7 +49,7 @@ const InputForm = ({ pages }) => {
               <Link to={"/register"}>
                 <Label
                   isi={"Daftar"}
-                  className={"font-[500] lg:text-[14px] lg:font-[400]"}
+                  className={"font-[500] lg:text-[14px] lg:font-[400] cursor-pointer"}
                 />
               </Link>
             </div>

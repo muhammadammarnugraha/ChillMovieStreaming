@@ -23,19 +23,22 @@ const Carrousel = ({ title, isHorizontal, line }) => {
     <>
       {/* viewport mobile */}
       <div
-        className={`relative ${sizeCarousel} pl-[30px] w-full overflow-y-hidden overflow-x-hidden block min-[1440px]:hidden`}
+        className={`relative ${sizeCarousel} mt-[20px] pl-[30px] w-full overflow-y-visible overflow-x-hidden block min-[1440px]:hidden`}
       >
         <Label
           isi={title}
           className={
-            "text-left text-[20px] font[700] py-[20px] lg:text-[32px] lg:py-[40px]"
+            "text-left text-[20px] font[700] pb-[20px] min-[1440px]:text-[32px] min-[1440px]:pt-[40px] min-[1440px]:pb-[32px]"
           }
         />
         <Card
-          className={`flex flex-row w-full ${sizeCard} rounded-l-[6px] absolute overflow-x-scroll gap-[16px]`}
+          className={`flex flex-row w-full  ${sizeCard} rounded-l-[6px] absolute overflow-y-visible overflow-x-scroll gap-[16px]`}
           cardForm={isHorizontal ? "horizontal" : "vertical"}
           sizeCard={sizeCard}
           line={line}
+          triggerPop={setPop}
+          popUp={true}
+          
         />
       </div>
       {/* viewport desktop (1440px) */}
@@ -50,14 +53,16 @@ const Carrousel = ({ title, isHorizontal, line }) => {
             }
           />
 
-          <div className={`relative flex w-[1280px] ${isHorizontal? "h-[162px]":"365px"} justify-center items-center overflow-visible`}>
+          <div
+            className={`relative flex w-[1280px] ${isHorizontal ? "h-[162px]" : "365px"} justify-center items-center overflow-visible`}
+          >
             <button
               onClick={() => {
                 setMoveLeft(
                   (moveLeft) => moveLeft + (isHorizontal ? 1304 : 1308),
                 );
               }}
-              className={`size-[44px] absolute translate-x-[-20px] ${isHorizontal ? "top-[59px]" : "top-[161px]"} left-0 z-[1]`}
+              className={`size-[44px] absolute translate-x-[-20px] ${isHorizontal ? "top-[59px]" : "top-[161px]"} left-0 z-[1] cursor-pointer`}
             >
               <img src={Left} alt="" />
             </button>
@@ -67,7 +72,7 @@ const Carrousel = ({ title, isHorizontal, line }) => {
                   (moveRight) => moveRight - (isHorizontal ? 1304 : 1308),
                 );
               }}
-              className={`size-[44px] absolute translate-x-[20px] ${isHorizontal ? "top-[59px]" : "top-[161px]"} right-0 z-[1]`}
+              className={`size-[44px] absolute translate-x-[20px] ${isHorizontal ? "top-[59px]" : "top-[161px]"} right-0 z-[1] cursor-pointer`}
             >
               <img src={Right} alt="" />
             </button>
@@ -83,7 +88,7 @@ const Carrousel = ({ title, isHorizontal, line }) => {
             />
           </div>
           <div
-            className={`top-[94px] absolute ${showPop} w-[1280px] ${isHorizontal? "h-[162px]":"h-[365px]"} justify-center items-center overflow-visible`}
+            className={`top-[94px] absolute ${showPop} w-[1280px] ${isHorizontal ? "h-[162px]" : "h-[365px]"} justify-center items-center overflow-visible`}
           >
             <Card
               className={`relative ${showPop} justify-start flex-row w-full z-[1] ${isHorizontal ? "gap-[24px]" : "gap-[28px]"}`}
@@ -93,7 +98,6 @@ const Carrousel = ({ title, isHorizontal, line }) => {
               moveLeft={moveLeft}
               moveRight={moveRight}
               isHorizontal={isHorizontal}
-              popUp={showPop}
               isHover={true}
               triggerPop={setPop}
             />

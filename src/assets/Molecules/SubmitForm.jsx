@@ -14,7 +14,7 @@ const SubmitForm = ({ pages }) => {
         <Button
           type={"submit"}
           isi={pages == "login" ? "Masuk" : "Daftar"}
-          className={`${tempProps} bg-[#3D4142]`}
+          className={`${tempProps} bg-[#3D4142] cursor-pointer`}
         />
       </Link>
       <Label
@@ -25,11 +25,13 @@ const SubmitForm = ({ pages }) => {
         className={`${tempProps} flex justify-center gap-[11.55px] lg:gap-[20px] items-center`}
       >
         <img src={Google} alt="Google" className="size-[10px] lg:size-[18px]" />
-
-        <Button
-          type={"submit"}
-          isi={`${pages == "login" ? "Masuk" : "Daftar"} dengan Google`}
-        />
+        <Link to={"/"}>
+          <Button
+            type={"submit"}
+            isi={`${pages == "login" ? "Masuk" : "Daftar"} dengan Google`}
+            className={"cursor-pointer"}
+          />
+        </Link>
       </div>
     </div>
   );
