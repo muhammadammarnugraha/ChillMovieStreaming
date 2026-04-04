@@ -4,7 +4,7 @@ import Label from "../Atoms/Label";
 import Button from "../Atoms/Button";
 import Information from "../Images/logoInformation.png";
 import Volume from "../Images/logoVolume.png";
-import Video from "../Videos/DutyAfterSchool_trailer.mp4"
+import Video from "../Videos/DutyAfterSchool_Trailer.mp4"
 
 const Hero = () => {
   return (
