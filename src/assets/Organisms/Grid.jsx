@@ -11,15 +11,15 @@ import Right from "../Images/buttonRight.png";
 
 const Grid = () => {
   let daftarFilm = localStorage.getItem("data");
-  daftarFilm = JSON.parse(daftarFilm);
+  daftarFilm = daftarFilm? JSON.parse(daftarFilm) : [];
   const [hovered, setHovered] = useState(0);
   const [rating, setRating] = useState(0);
   return (
     <div className="relative flex justify-start justify-self-center flex-wrap gap-x-[17px] gap-y-[16px] w-[320.18px] min-[1440px]:gap-x-[16px] min-[1440px]:gap-y-[32px] min-[1440px]:w-[1280px] z-[0] pb-[40px]"> 
-      {daftarFilm.map((film) => (
+      {daftarFilm.length == 0 ? <span className="font-[700] text-[15px] w-[100vw] h-[100vw] min-[1440px]:w-[100%] min-[1440px]:h-[100%] pt-[180px] flex justify-center items-center">== Belum ada film yang disimpan ==</span> : daftarFilm.map((film) => (
         <React.Fragment key={film.id}>
           <div
-            onMouseEnter={() => setHovered(film.id)}
+            onMouseOver={() => setHovered(film.id)}
             onMouseLeave={() => setHovered((film.id = null))}
             className="min-[1440px]:relative w-[95px] h-[145px] min-[1440px]:w-[200px] min-[1440px]:h-[300px]"
           >
@@ -64,6 +64,7 @@ const Grid = () => {
                         let temp = storage.filter((f) => f.id !== film.id);
                         storage = JSON.stringify(temp);
                         localStorage.setItem("data", storage);
+                        setHovered(film.id === null)
                       }}
                     />
                   </div>
