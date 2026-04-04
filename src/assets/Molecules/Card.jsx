@@ -6,7 +6,7 @@ import AtwowH from "../Images/posterHorizontal/avatarTheWayOfWaterHorizontal.png
 import BlueLockH from "../Images/posterHorizontal/blueLockHorizontal.png";
 import rioH from "../Images/posterHorizontal/rioHorizontal.png";
 import StuartH from "../Images/posterHorizontal/stuartLittleHorizontal.png";
-import BayMaxH from "../Images/posterHorizontal/baymaxHorizontal.png";
+import BayMaxH from "../Images/posterHorizontal/bayMaxHorizontal.png";
 import BlackAdamH from "../Images/posterHorizontal/blackAdamHorizontal.png";
 import HappinessH from "../Images/posterHorizontal/stairsHorizontal.png";
 import BnhH from "../Images/posterHorizontal/myHeroAcademiaHorizontal.png";
