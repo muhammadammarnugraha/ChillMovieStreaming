@@ -14,7 +14,7 @@ import MermaidH from "../Images/posterHorizontal/littleMermaidHorizontal.png";
 import FastFuriousXH from "../Images/posterHorizontal/fastXFuriousHorizontal.png";
 import Big6H from "../Images/posterHorizontal/bigHero6Horizontal.png";
 import JurassicH from "../Images/posterHorizontal/jurassicWorldHorizontal.png";
-import SpiderManH from "../Images/posterHorizontal/spidermanHorizontal.png";
+import SpiderManH from "../Images/posterHorizontal/spiderManHorizontal.png";
 import TedLassoH from "../Images/posterHorizontal/tedLassoHorizontal.png";
 import SuzumeH from "../Images/posterHorizontal/suzumeHorizontal.png";
 import ShazamH from "../Images/posterHorizontal/shazamHorizontal.png";
