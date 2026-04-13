@@ -1,4 +1,3 @@
-import React from "react";
 import Poster from "../Atoms/Poster";
 import AliceH from "../Images/posterHorizontal/aliceInBorderlandHorizontal.png";
 import AoudH from "../Images/posterHorizontal/allOfUsDeadHorizontal.png";
@@ -39,6 +38,8 @@ import DutyV from "../Images/posterVertical/dutyAfterSchoolVertical.png";
 import ShazamV from "../Images/posterVertical/shazamVertical.png";
 import AliceV from "../Images/posterVertical/aliceInBorderlandVertical.png";
 
+import useStoreFilm from "../Stores/Store";
+
 const Card = ({
   children,
   className,
@@ -52,6 +53,123 @@ const Card = ({
   isHover,
   popUp,
 }) => {
+  const dataFilm = useStoreFilm((state) => state.film);
+
+  if (dataFilm.length === 0) return null
+
+  const daftarFilmHorizontal = [
+    {
+      id: 1,
+      isDark: true,
+      isStar: true,
+    },
+    {
+      id: 2,
+      isDark: true,
+      isStar: true,
+    },
+    {
+      id: 3,
+      isDark: true,
+      isStar: true,
+    },
+    {
+      id: 4,
+      isDark: true,
+      isStar: true,
+    },
+    {
+      id: 5,
+      isDark: true,
+      isStar: true,
+    },
+    {
+      id: 6,
+      isDark: true,
+      isStar: true,
+    },
+  ];
+  
+  const formatHorizontal = daftarFilmHorizontal.map((itemTambahan) => {
+    const listFilm = dataFilm.find((f) => Number(f.id) === itemTambahan.id);
+    return {
+      ...listFilm,
+      ...itemTambahan,
+    };
+  });
+
+  const daftarFilmSatu = [
+    {
+      ...dataFilm[7],
+      isNewEp: false,
+      isPrem: true,
+      isTop: true,
+    },
+    {
+      ...dataFilm[8],
+      isTop: true,
+    },
+    {
+      ...dataFilm[6],
+      isTop: true,
+    },
+    {
+      ...dataFilm[14],
+      isTop: true,
+    },
+    {
+      ...dataFilm[13],
+      isTop: true,
+      isNewEp: true,
+    },
+    dataFilm[16],
+  ];
+
+  const daftarFilmDua = [
+    {
+      ...dataFilm[17],
+      isNewEp: false,
+      isPrem: true,
+      isTop: false,
+    },
+    dataFilm[0],
+    dataFilm[4],
+    dataFilm[2],
+    dataFilm[1],
+    dataFilm[6],
+    dataFilm[9],
+    dataFilm[12],
+    dataFilm[10],
+    dataFilm[16],
+  ];
+
+  const daftarFilmTiga = [
+    dataFilm[18],
+    dataFilm[17],
+    dataFilm[14],
+    dataFilm[16],
+    dataFilm[15],
+    dataFilm[13],
+    dataFilm[12],
+    dataFilm[3],
+    dataFilm[6],
+    dataFilm[4],
+    dataFilm[8],
+  ];
+
+  const daftarFilmEmpat = [
+    dataFilm[14],
+    dataFilm[10],
+    dataFilm[11],
+    dataFilm[3],
+    dataFilm[6],
+    dataFilm[5],
+    dataFilm[1],
+    dataFilm[0],
+    dataFilm[9],
+    dataFilm[12],
+  ];
+
   return (
     <Poster
       cardForm={cardForm}
@@ -80,227 +198,114 @@ const Card = ({
   );
 };
 
-const dataFilm = [
-  {
-    id: 1,
-    judul: "Alice in Borderland",
-    image: AliceV,
-    imageH: AliceH,
-    rating: 4.5,
-  },
-  {
-    id: 2,
-    judul: "All of Us Dead",
-    image: AoudV,
-    imageH: AoudH,
-    rating: 4.8,
-  },
-  {
-    id: 3,
-    judul: "Avatar",
-    image: AtwowV,
-    imageH: AtwowH,
-    rating: 3.9,
-  },
-  {
-    id: 4,
-    judul: "Blue Lock",
-    image: BlueLockV,
-    imageH: BlueLockH,
-    rating: 3.1,
-  },
-  {
-    id: 5,
-    judul: "Rio",
-    image: rioV,
-    imageH: rioH,
-    rating: 3.5,
-  },
-  {
-    id: 6,
-    judul: "Stuart Little",
-    image: StuartV,
-    imageH: StuartH,
-    rating: 4.2,
-  },
-  {
-    id: 7,
-    image: BayMaxV,
-    imageH: BayMaxH,
-  },
-  {
-    id: 8,
-    image: BlackAdamV,
-    imageH: BlackAdamH,
-  },
-  {
-    id: 9,
-    image: BnhV,
-    imageH: BnhH,
-  },
-  {
-    id: 10,
-    image: FastFuriousXV,
-    imageH: FastFuriousXH,
-  },
-  {
-    id: 11,
-    image: DutyV,
-    imageH: DutyV,
-  },
-  {
-    id: 12,
-    image: Big6V,
-    imageH: Big6H,
-  },
-  {
-    id: 13,
-    image: MermaidV,
-    imageH: MermaidH,
-  },
-  {
-    id: 14,
-    image: HappinessV,
-    imageH: HappinessH,
-  },
-  {
-    id: 15,
-    image: JurassicV,
-    imageH: JurassicH,
-  },
-  {
-    id: 16,
-    image: SpiderManV,
-    imageH: SpiderManH,
-  },
-  {
-    id: 17,
-    image: TedLassoV,
-    imageH: TedLassoH,
-  },
-  {
-    id: 18,
-    image: SuzumeV,
-    imageH: SuzumeH,
-  },
-  {
-    id: 19,
-    image: ShazamV,
-    imageH: ShazamH,
-  },
-];
-
-const daftarFilmHorizontal = [
-  {
-    id: 1,
-    isDark: true,
-    isStar: true,
-  },
-  {
-    id: 2,
-    isDark: true,
-    isStar: true,
-  },
-  {
-    id: 3,
-    isDark: true,
-    isStar: true,
-  },
-  {
-    id: 4,
-    isDark: true,
-    isStar: true,
-  },
-  {
-    id: 5,
-    isDark: true,
-    isStar: true,
-  },
-  {
-    id: 6,
-    isDark: true,
-    isStar: true,
-  },
-];
-
-const formatHorizontal = daftarFilmHorizontal.map((itemTambahan) => {
-  const listFilm = dataFilm.find((f) => f.id === itemTambahan.id);
-  return {
-    ...listFilm,
-    ...itemTambahan,
-  };
-});
-
-const daftarFilmSatu = [
-  {
-    ...dataFilm[7],
-    isNewEp: false,
-    isPrem: true,
-    isTop: true,
-  },
-  {
-    ...dataFilm[8],
-    isTop: true,
-  },
-  {
-    ...dataFilm[6],
-    isTop: true,
-  },
-  {
-    ...dataFilm[14],
-    isTop: true,
-  },
-  {
-    ...dataFilm[13],
-    isTop: true,
-    isNewEp: true
-  },
-  dataFilm[16],
-];
-
-const daftarFilmDua = [
-  {
-    ...dataFilm[17],
-    isNewEp: false,
-    isPrem: true,
-    isTop: false,
-  },
-  dataFilm[0],
-  dataFilm[4],
-  dataFilm[2],
-  dataFilm[1],
-  dataFilm[6],
-  dataFilm[9],
-  dataFilm[12],
-  dataFilm[10],
-  dataFilm[16],
-];
-
-const daftarFilmTiga = [
-  dataFilm[18],
-  dataFilm[17],
-  dataFilm[14],
-  dataFilm[16],
-  dataFilm[15],
-  dataFilm[13],
-  dataFilm[12],
-  dataFilm[3],
-  dataFilm[6],
-  dataFilm[4],
-  dataFilm[8],
-];
-
-const daftarFilmEmpat = [
-  dataFilm[14],
-  dataFilm[10],
-  dataFilm[11],
-  dataFilm[3],
-  dataFilm[6],
-  dataFilm[5],
-  dataFilm[1],
-  dataFilm[0],
-  dataFilm[9],
-  dataFilm[12],
-];
+// const dataFilm = [
+//   {
+//     id: 1,
+//     judul: "Alice in Borderland",
+//     image: AliceV,
+//     imageH: AliceH,
+//     rating: 4.5,
+//   },
+//   {
+//     id: 2,
+//     judul: "All of Us Dead",
+//     image: AoudV,
+//     imageH: AoudH,
+//     rating: 4.8,
+//   },
+//   {
+//     id: 3,
+//     judul: "Avatar",
+//     image: AtwowV,
+//     imageH: AtwowH,
+//     rating: 3.9,
+//   },
+//   {
+//     id: 4,
+//     judul: "Blue Lock",
+//     image: BlueLockV,
+//     imageH: BlueLockH,
+//     rating: 3.1,
+//   },
+//   {
+//     id: 5,
+//     judul: "Rio",
+//     image: rioV,
+//     imageH: rioH,
+//     rating: 3.5,
+//   },
+//   {
+//     id: 6,
+//     judul: "Stuart Little",
+//     image: StuartV,
+//     imageH: StuartH,
+//     rating: 4.2,
+//   },
+//   {
+//     id: 7,
+//     image: BayMaxV,
+//     imageH: BayMaxH,
+//   },
+//   {
+//     id: 8,
+//     image: BlackAdamV,
+//     imageH: BlackAdamH,
+//   },
+//   {
+//     id: 9,
+//     image: BnhV,
+//     imageH: BnhH,
+//   },
+//   {
+//     id: 10,
+//     image: FastFuriousXV,
+//     imageH: FastFuriousXH,
+//   },
+//   {
+//     id: 11,
+//     image: DutyV,
+//     imageH: DutyV,
+//   },
+//   {
+//     id: 12,
+//     image: Big6V,
+//     imageH: Big6H,
+//   },
+//   {
+//     id: 13,
+//     image: MermaidV,
+//     imageH: MermaidH,
+//   },
+//   {
+//     id: 14,
+//     image: HappinessV,
+//     imageH: HappinessH,
+//   },
+//   {
+//     id: 15,
+//     image: JurassicV,
+//     imageH: JurassicH,
+//   },
+//   {
+//     id: 16,
+//     image: SpiderManV,
+//     imageH: SpiderManH,
+//   },
+//   {
+//     id: 17,
+//     image: TedLassoV,
+//     imageH: TedLassoH,
+//   },
+//   {
+//     id: 18,
+//     image: SuzumeV,
+//     imageH: SuzumeH,
+//   },
+//   {
+//     id: 19,
+//     image: ShazamV,
+//     imageH: ShazamH,
+//   },
+// ];
 
 export default Card;

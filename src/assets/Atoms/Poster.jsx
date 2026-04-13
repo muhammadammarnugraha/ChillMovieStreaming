@@ -7,6 +7,7 @@ import Play from "../Images/logoPlay.png";
 import Button from "./Button";
 import Volume from "../Images/logoVolume.png";
 import Quit from "../Images/logoQuit.png";
+import useStoreFilm from "../Stores/Store";
 
 const Poster = ({
   className,
@@ -22,6 +23,7 @@ const Poster = ({
 }) => {
   const total = moveLeft + moveRight;
   const [active, setActive] = useState("");
+  const postFilm = useStoreFilm((state) => (state.postFilm))
 
   return (
     <div className={className}>
@@ -38,7 +40,6 @@ const Poster = ({
             onMouseOver={() => {
               triggerPop("flex");
               setActive(film.id);
-              console.log(film.id);
             }}
             onMouseLeave={() => {
               triggerPop("hidden");
@@ -56,7 +57,7 @@ const Poster = ({
               >
                 <div className="flex flex-col h-[460px] w-[408px] rounded-[20px] shadow-[0px_19.43px_48.57px_0px_rgba(255,255,255,0.04)]">
                   <img
-                    src={film.imageH}
+                    src={"/Images/posterHorizontal/"+film.imageH}
                     alt="Poster Film"
                     className="h-[255px] relative rounded-t-[20px] flex-shrink-0"
                   />
@@ -76,21 +77,30 @@ const Poster = ({
                             />
                           }
                           className="size-[54px] flex justify-center items-center border-solid border-[#9D9EA1] border-[1.21px] rounded-[30px]"
-                          onClick={() => {
-                            let storage = JSON.parse(
-                              localStorage.getItem("data") || "[]",
-                            );
-                            storage.push({
-                              id: film.id,
+                          onClick={() => (postFilm("daftarSaya",{
+                              id: String(film.id),
+                              judul: film.judul,
                               image: film.image,
                               imageH: film.imageH,
                               rating: film.rating,
-                            });
-                            localStorage.setItem(
-                              "data",
-                              JSON.stringify(storage),
-                            );
-                          }}
+                            }))
+                          //   () => {
+                          //   let storage = JSON.parse(
+                          //     localStorage.getItem("data") || "[]",
+                          //   );
+                          //   storage.push({
+                          //     id: film.id,
+                          //     image: film.image,
+                          //     imageH: film.imageH,
+                          //     rating: film.rating,
+                          //   });
+                          //   localStorage.setItem(
+                          //     "data",
+                          //     JSON.stringify(storage),
+                          //   );
+                          // }
+                        
+                        }
                         />
                       </div>
                       <Button
@@ -127,7 +137,7 @@ const Poster = ({
                   className={`${active === film.id ? "z-[10]" : "z-[0]"}`}
                 >
                   <img
-                    src={film.isDark ? film.imageH : film.image}
+                    src={film.isDark ? "/Images/posterHorizontal/"+film.imageH : "/Images/posterVertical/"+film.image}
                     alt="Poster Film"
                     className={`rounded-[8px] ${
                       film.isDark
@@ -205,19 +215,13 @@ const Poster = ({
                             }
                             className="size-[24px] flex justify-center items-center border-solid border-[#9D9EA1] border-[1.21px] rounded-[16px] bottom-[17.44px] left-[90.44px] absolute"
                             onClick={() => {
-                              let storage = JSON.parse(
-                                localStorage.getItem("data") || "[]",
-                              );
-                              storage.push({
-                                id: film.id,
-                                image: film.image,
-                                imageH: film.imageH,
-                                rating: film.rating,
-                              });
-                              localStorage.setItem(
-                                "data",
-                                JSON.stringify(storage),
-                              );
+                              postFilm("daftarSaya",{
+                                "id" : String(film.id),
+                                "judul": film.judul,
+                                "image": film.image,
+                                "imageH": film.imageH,
+                                "rating": film.rating
+                              })  
                             }}
                           />
                           <Button
@@ -233,7 +237,7 @@ const Poster = ({
                           </Button>
                       </div>
                       <img
-                        src={film.imageH}
+                        src={"/Images/posterHorizontal/"+film.imageH}
                         alt="film popUp"
                         className="w-full h-[190px] object-fill rounded-t-[6px]"
                       />
@@ -292,17 +296,17 @@ const Poster = ({
                         />
                         <div className="flex justify-center items-center h-[205px] gap-[10px]">
                           <img
-                            src={film.image}
+                            src={"/Images/posterVertical/"+film.image}
                             alt="film popUp"
                             className="w-[88px] h-[132px] object-fill"
                           />
                           <img
-                            src={film.image}
+                            src={"/Images/posterVertical/"+film.image}
                             alt="film popUp"
                             className="w-[88px] h-[132px] object-fill"
                           />
                           <img
-                            src={film.image}
+                            src={"/Images/posterVertical/"+film.image}
                             alt="film popUp"
                             className="w-[88px] h-[132px] object-fill"
                           />

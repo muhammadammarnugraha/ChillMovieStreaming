@@ -1,0 +1,135 @@
+[
+  {
+    "id": "1",
+    "judul": "Alice in Borderland",
+    "image": "aliceInBorderlandVertical.png",
+    "imageH": "aliceInBorderlandHorizontal.png",
+    "rating": 4.5
+  },
+  {
+    "id": "2",
+    "judul": "All of Us Are Dead",
+    "image": "allOfUsAreDeadVertical.png",
+    "imageH": "allOfUsAreDeadHorizontal.png",
+    "rating": 4.8
+  },
+  {
+    "id": "3",
+    "judul": "Avatar",
+    "image": "avatarTheWayOfWaterVertical.png",
+    "imageH": "avatarTheWayOfWaterHorizontal.png",
+    "rating": 3.9
+  },
+  {
+    "id": "4",
+    "judul": "Blue Lock",
+    "image": "blueLockVertical.png",
+    "imageH": "blueLockHorizontal.png",
+    "rating": 3.1
+  },
+  {
+    "id": "5",
+    "judul": "Rio",
+    "image": "rioVertical.png",
+    "imageH": "rioHorizontal.png",
+    "rating": 3.5
+  },
+  {
+    "id": "6",
+    "judul": "Stuart Little",
+    "image": "stuartLittleVertical.png",
+    "imageH": "stuartLittleHorizontal.png",
+    "rating": 4.2
+  },
+  {
+    "id": "7",
+    "judul": "BayMax",
+    "image": "bayMaxVertical.png",
+    "imageH": "bayMaxHorizontal.png",
+    "rating": 4.6
+  },
+  {
+    "id": "8",
+    "judul": "Black Adam",
+    "image": "blackAdamVertical.png",
+    "imageH": "blackAdamHorizontal.png",
+    "rating": 3.9
+  },
+  {
+    "id": "9",
+    "judul": "Boku No Hero Academia",
+    "image": "myHeroAcademiaVertical.png",
+    "imageH": "myHeroAcademiaHorizontal.png",
+    "rating": 4.5
+  },
+  {
+    "id": "10",
+    "judul": "Fast and Furious X",
+    "image": "fastXFuriousVertical.png",
+    "imageH": "fastXFuriousHorizontal.png",
+    "rating": 4
+  },
+  {
+    "id": "11",
+    "judul": "Duty After School",
+    "image": "dutyAfterSchoolVertical.png",
+    "imageH": "dutyAfterSchoolHorizontal.png",
+    "rating": 4.2
+  },
+  {
+    "id": "12",
+    "judul": "Big Hero 6",
+    "image": "bigHero6Vertical.png",
+    "imageH": "bigHero6Horizontal.png",
+    "rating": 4.4
+  },
+  {
+    "id": "13",
+    "judul": "A Little Mermaid",
+    "image": "littleMermaidVertical.png",
+    "imageH": "littleMermaidHorizontal.png",
+    "rating": 3.3
+  },
+  {
+    "id": "14",
+    "judul": "Happiness",
+    "image": "happinessVertical.png",
+    "imageH": "happinessHorizontal.png",
+    "rating": 3.1
+  },
+  {
+    "id": "15",
+    "judul": "Jurassic World",
+    "image": "jurassicWorldVertical.png",
+    "imageH": "jurassicWorldHorizontal.png",
+    "rating": 4.6
+  },
+  {
+    "id": "16",
+    "judul": "Spider Man",
+    "image": "spiderManVertical.png",
+    "imageH": "spiderManHorizontal.png",
+    "rating": 3.7
+  },
+  {
+    "id": "17",
+    "judul": "Ted Lasso",
+    "image": "tedLassoVertical.png",
+    "imageH": "tedLassoHorizontal.png",
+    "rating": 3.9
+  },
+  {
+    "id": "18",
+    "judul": "Suzume",
+    "image": "suzumeVertical.png",
+    "imageH": "suzumeHorizontal.png",
+    "rating": 4.8
+  },
+  {
+    "id": "19",
+    "judul": "Shazam",
+    "image": "shazamVertical.png",
+    "imageH": "shazamHorizontal.png",
+    "rating": 4
+  }
+]

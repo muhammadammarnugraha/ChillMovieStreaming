@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DaftarSaya from "../Pages/DaftarSaya";
 import Button from "../Atoms/Button";
 import Add from "../Images/logoAdd.png";
@@ -9,22 +9,36 @@ import Star from "../Images/logoStar.png";
 import Left from "../Images/buttonLeft.png";
 import Right from "../Images/buttonRight.png";
 
+import useStoreFilm from "../Stores/Store";
+
 const Grid = () => {
-  let daftarFilm = localStorage.getItem("data");
-  daftarFilm = daftarFilm? JSON.parse(daftarFilm) : [];
+  let fetchDaftarSaya = useStoreFilm((state) => (state.fetchDaftarSaya))
+  let daftarFilm = useStoreFilm((state) => (state.filmDaftarSaya))
+  let putFilm = useStoreFilm((state) => (state.putFilm))
+  let deleteFilm = useStoreFilm((state) => (state.deleteFilm))
   const [hovered, setHovered] = useState(0);
   const [rating, setRating] = useState(0);
+
+  useEffect(() => {
+    fetchDaftarSaya();
+  },[])
+
   return (
     <div className="relative flex justify-start justify-self-center flex-wrap gap-x-[17px] gap-y-[16px] w-[320.18px] min-[1440px]:gap-x-[16px] min-[1440px]:gap-y-[32px] min-[1440px]:w-[1280px] z-[0] pb-[40px]"> 
       {daftarFilm.length == 0 ? <span className="font-[700] text-[15px] w-[100vw] h-[100vw] min-[1440px]:w-[100%] min-[1440px]:h-[100%] pt-[180px] flex justify-center items-center">== Belum ada film yang disimpan ==</span> : daftarFilm.map((film) => (
         <React.Fragment key={film.id}>
           <div
-            onMouseOver={() => setHovered(film.id)}
-            onMouseLeave={() => setHovered((film.id = null))}
+            onMouseOver={() => 
+            {
+              setHovered(film.id)
+            }
+              
+            }
+            onMouseLeave={() => setHovered(null)}
             className="min-[1440px]:relative w-[95px] h-[145px] min-[1440px]:w-[200px] min-[1440px]:h-[300px]"
           >
             <img
-              src={film.image}
+              src={"/Images/posterVertical/"+film.image}
               alt="Film Favorit" 
               className={`${hovered == film.id ? "z-[1]" : "scale-[1]"} w-[95px] h-[145px] min-[1440px]:w-[200px] min-[1440px]:h-[300px] rounded-[3.82px] min-[1440px]:rounded-[8px] absolute`}
             />  
@@ -32,15 +46,14 @@ const Grid = () => {
               className={`${hovered == film.id ? "flex flex-col bg-[#181A1C]/80 min-[1440px]:bg-[#181A1C]/0 w-[100vw] h-[100vh] inset-0 shadow-[0px_19.43px_48.57px_0px_rgba(255,255,255,0.04)] scale-100 opacity-100 z-[100]" : "z-[100] flex flex-col scale-0 opacity-50"} min-[1440px]:top-1/2 min-[1440px]:left-1/2 min-[1440px]:-translate-x-1/2 min-[1440px]:-translate-y-1/2 min-[1440px]:w-[408px] min-[1440px]:h-[460px] fixed min-[1440px]:absolute items-center justify-center rounded-[20px] min-[1440px]:delay-800 min-[1440px]:duration-300`}
               onClick={
                 (e) => {
-                  setHovered((film.id = null))
-                  console.log("masuk")
+                  setHovered(null)
               }
                 }
                 
               
             >
               <img
-                src={film.imageH}
+                src={"/Images/posterHorizontal/"+film.imageH}
                 alt="gambarHorizontal"
                 className="rounded-t-[20px] flex justify-center items-center w-[280px] h-[150px] min-[1440px]:w-[408px] min-[1440px]:h-[255px] shrink-0"
               />
@@ -59,12 +72,7 @@ const Grid = () => {
                         "w-[55px] h-[25px] text-[12px] min-[1440px]:w-[102px] min-[1440px]:h-[42px] min-[1440px]:text-[16px] font-[700] flex justify-center bg-[#FF5B3A] items-center border-solid border-[#9D9EA1] rounded-[48px]"
                       }
                       onClick={() => {
-                        let storage = localStorage.getItem("data");
-                        storage = JSON.parse(storage);
-                        let temp = storage.filter((f) => f.id !== film.id);
-                        storage = JSON.stringify(temp);
-                        localStorage.setItem("data", storage);
-                        setHovered(film.id === null)
+                        deleteFilm(film.id,film.idDaftarSaya)
                       }}
                     />
                   </div>
@@ -99,14 +107,7 @@ const Grid = () => {
                           0,
                           Number((film.rating - 0.1).toFixed(1)),
                         );
-                        setRating(newNumber);
-                        let storage = localStorage.getItem("data");
-                        storage = JSON.parse(storage);
-                        let temp = storage.map((f) =>
-                          f.id === film.id ? { ...f, rating: newNumber } : f,
-                        );
-                        storage = JSON.stringify(temp);
-                        localStorage.setItem("data", storage);
+                        putFilm(film.id,newNumber,film.idDaftarSaya)
                       }}
                     >
                       <img src={Left} alt="decrease" className={"size-[13px] min-[1440px]:size-[20px]"}/>
@@ -119,14 +120,7 @@ const Grid = () => {
                           5,
                           Number((film.rating + 0.1).toFixed(1)),
                         );
-                        setRating(newNumber);
-                        let storage = localStorage.getItem("data");
-                        storage = JSON.parse(storage);
-                        let temp = storage.map((f) =>
-                          f.id === film.id ? { ...f, rating: newNumber } : f,
-                        );
-                        storage = JSON.stringify(temp);
-                        localStorage.setItem("data", storage);
+                        putFilm(film.id,newNumber,film.idDaftarSaya)
                       }} 
                     >
                       <img src={Right} alt="increase" className={"size-[13px] min-[1440px]:size-[20px]"}/>
