@@ -9,7 +9,7 @@ const Carrousel = ({ title, isHorizontal, line }) => {
   let sizeCarousel = "";
   const [moveLeft, setMoveLeft] = useState(0);
   const [moveRight, setMoveRight] = useState(0);
-  const [showPop, setPop] = useState("hidden");
+  const [showPop, setPop] = useState("scale-100 opacity-0");
 
   {
     isHorizontal
@@ -54,7 +54,7 @@ const Carrousel = ({ title, isHorizontal, line }) => {
           />
 
           <div
-            className={`relative flex w-[1280px] ${isHorizontal ? "h-[162px]" : "365px"} justify-center items-center overflow-visible`}
+            className={`relative flex w-[1280px] ${isHorizontal ? "h-[162px]" : "365px"} justify-center items-center overflow-visible z-[3]`}
           >
             <button
               onClick={() => {
@@ -77,7 +77,7 @@ const Carrousel = ({ title, isHorizontal, line }) => {
               <img src={Right} alt="" />
             </button>
             <Card
-              className={`static flex justify-start flex-row w-full rounded-l-[6px] ${isHorizontal ? "gap-[24px]" : "gap-[28px]"}  overflow-x-hidden overflow-y-visible`}
+              className={`static flex justify-start flex-row w-full rounded-l-[6px] ${isHorizontal ? "gap-[24px]" : "gap-[28px]"} z-[0] overflow-x-hidden overflow-y-visible `}
               cardForm={isHorizontal ? "horizontal" : "vertical"}
               sizeCard={sizeCard}
               line={line}
@@ -88,10 +88,10 @@ const Carrousel = ({ title, isHorizontal, line }) => {
             />
           </div>
           <div
-            className={`top-[94px] absolute ${showPop} w-[1280px] ${isHorizontal ? "h-[162px]" : "h-[365px]"} justify-center items-center overflow-visible`}
+            className={`flex duration-300 top-[94px] absolute bg-[transparent] ${showPop} w-[1280px] ${isHorizontal ? "h-[162px]" : "h-[365px]"}justify-center items-center overflow-x-visible overflow-visible z-[4]`}
           >
             <Card
-              className={`relative ${showPop} justify-start flex-row w-full z-[10000] ${isHorizontal ? "gap-[24px] " : "gap-[28px]"}`}
+              className={`relative flex ${showPop} justify-start flex-row w-full z-[10000] ${isHorizontal ? "gap-[24px] " : "gap-[28px]"} `}
               cardForm={isHorizontal ? "horizontal" : "vertical"}
               sizeCard={sizeCard}
               line={line}

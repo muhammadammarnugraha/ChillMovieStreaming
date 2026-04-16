@@ -23,7 +23,7 @@ const Poster = ({
 }) => {
   const total = moveLeft + moveRight;
   const [active, setActive] = useState("");
-  const postFilm = useStoreFilm((state) => (state.postFilm))
+  const postFilm = useStoreFilm((state) => state.postFilm);
 
   return (
     <div className={className}>
@@ -32,32 +32,37 @@ const Poster = ({
           <div
             key={film.id}
             style={total >= 0 ? { translate: 0 } : { translate: `${total}px` }}
-            className={`relative flex justify-center items-center ${film.id===active?"z-[1000]":"z-[0]"} ${sizeCard} ${
+            className={`relative flex justify-center items-center ${film.id === active ? "z-[1000]" : "z-[0]"} ${sizeCard} ${
               isHorizontal
                 ? "w-[309px] min-[1440px]:w-[302px]"
                 : "min-[1440px]:w-[234px]"
             } flex-shrink-0 transition delay-150 duration-1000`}
             onMouseOver={() => {
-              triggerPop("flex");
+              triggerPop("opacity-100 scale-100");
               setActive(film.id);
             }}
-            onMouseLeave={() => {
-              triggerPop("hidden");
+            onMouseLeave={(e) => {
+
+              triggerPop("opacity-0 scale-0");
               setActive("");
             }}
           >
             {isHover ? (
               <div
-                className={`bg-[#181A1C] delay-800 duration-300 ${
+                className={`bg-[#181A1C] delay-300 duration-300 ${
                   film.id === active
                     ? "scale-100 opacity-100 pointer-events-auto z-[1000]"
-                    : "scale-0 opacity-50 pointer-events-none"
+                    : "scale-0 opacity-0 invisible"
                 } rounded-[20px]`}
-                onClick={(e) => (e.stopPropagation())}
+                onMouseOver={(e) => {
+                  e.stopPropagation();
+                  triggerPop("opacity-100 scale-100 pointer-events-none");
+                  setActive(film.id);
+                }}
               >
                 <div className="flex flex-col h-[460px] w-[408px] rounded-[20px] shadow-[0px_19.43px_48.57px_0px_rgba(255,255,255,0.04)]">
                   <img
-                    src={"/Images/posterHorizontal/"+film.imageH}
+                    src={"/Images/posterHorizontal/" + film.imageH}
                     alt="Poster Film"
                     className="h-[255px] relative rounded-t-[20px] flex-shrink-0"
                   />
@@ -73,34 +78,19 @@ const Poster = ({
                             <img
                               src={Add}
                               alt="AddMovie"
-                              className="size-[30px]"
+                              className="size-[30px] cursor-pointer"
                             />
                           }
                           className="size-[54px] flex justify-center items-center border-solid border-[#9D9EA1] border-[1.21px] rounded-[30px]"
-                          onClick={() => (postFilm("daftarSaya",{
+                          onClick={() =>
+                            postFilm("daftarSaya", {
                               id: String(film.id),
                               judul: film.judul,
                               image: film.image,
                               imageH: film.imageH,
                               rating: film.rating,
-                            }))
-                          //   () => {
-                          //   let storage = JSON.parse(
-                          //     localStorage.getItem("data") || "[]",
-                          //   );
-                          //   storage.push({
-                          //     id: film.id,
-                          //     image: film.image,
-                          //     imageH: film.imageH,
-                          //     rating: film.rating,
-                          //   });
-                          //   localStorage.setItem(
-                          //     "data",
-                          //     JSON.stringify(storage),
-                          //   );
-                          // }
-                        
-                        }
+                            })
+                          }
                         />
                       </div>
                       <Button
@@ -133,11 +123,13 @@ const Poster = ({
               </div>
             ) : (
               <div>
-                <div
-                  className={`${active === film.id ? "z-[10]" : "z-[0]"}`}
-                >
+                <div className={`${active === film.id ? "z-[10]" : "z-[-1]"}`}>
                   <img
-                    src={film.isDark ? "/Images/posterHorizontal/"+film.imageH : "/Images/posterVertical/"+film.image}
+                    src={
+                      film.isDark
+                        ? "/Images/posterHorizontal/" + film.imageH
+                        : "/Images/posterVertical/" + film.image
+                    }
                     alt="Poster Film"
                     className={`rounded-[8px] ${
                       film.isDark
@@ -185,59 +177,59 @@ const Poster = ({
                   <div className="bg-[#181A1C]/80 fixed flex items-center justify-center inset-0 z-[100] h-[100vh] w-[100vw] rounded-[6px] ">
                     <div className="relative w-[320px] h-auto bg-[#181A1C] rounded-[16px]">
                       <div className="flex flex-row absolute h-[190px] w-full">
-                          <Button
-                            isi={
-                              <img
-                                src={Quit}
-                                alt="Quit"
-                                className="bg-[#181A1C] size-[16px] rounded-[12.35px] p-[2px] top-[8px] absolute right-[8px]"
-                              />
-                            }
-                            onClick={()=>{
-                              triggerPop("hidden");
-                              setActive("")
-                            }}
-                            className={"pointer-events-auto"}
-                          />
-                          <Button
-                            isi={"Mulai"}
-                            className={
-                              "w-[55px] h-[25px] px-[12px] py-[4px] bg-[#0F1E93] rounded-[48px] flex items-center justify-center absolute bottom-[16.44px] left-[27px] font-[700] text-[12px]"
-                            }
-                          />
-                          <Button
-                            isi={
-                              <img
-                                src={Add}
-                                alt="AddMovie"
-                                className="size-[16px]"
-                              />
-                            }
-                            className="size-[24px] flex justify-center items-center border-solid border-[#9D9EA1] border-[1.21px] rounded-[16px] bottom-[17.44px] left-[90.44px] absolute"
-                            onClick={() => {
-                              postFilm("daftarSaya",{
-                                "id" : String(film.id),
-                                "judul": film.judul,
-                                "image": film.image,
-                                "imageH": film.imageH,
-                                "rating": film.rating
-                              })  
-                            }}
-                          />
-                          <Button
-                            className={
-                              "border rounded-[19px] p-[6px] size-[25px] flex justify-center items-center absolute right-[27.44px] bottom-[16.44px]"
-                            }
-                          >
+                        <Button
+                          isi={
                             <img
-                              src={Volume}
-                              alt="mute/unmute"
-                              className="size-[17px]"
+                              src={Quit}
+                              alt="Quit"
+                              className="bg-[#181A1C] size-[16px] rounded-[12.35px] p-[2px] top-[8px] absolute right-[8px]"
                             />
-                          </Button>
+                          }
+                          onClick={() => {
+                            triggerPop("hidden");
+                            setActive("");
+                          }}
+                          className={"pointer-events-auto"}
+                        />
+                        <Button
+                          isi={"Mulai"}
+                          className={
+                            "w-[55px] h-[25px] px-[12px] py-[4px] bg-[#0F1E93] rounded-[48px] flex items-center justify-center absolute bottom-[16.44px] left-[27px] font-[700] text-[12px]"
+                          }
+                        />
+                        <Button
+                          isi={
+                            <img
+                              src={Add}
+                              alt="AddMovie"
+                              className="size-[16px]"
+                            />
+                          }
+                          className="size-[24px] flex justify-center items-center border-solid border-[#9D9EA1] border-[1.21px] rounded-[16px] bottom-[17.44px] left-[90.44px] absolute"
+                          onClick={() => {
+                            postFilm("daftarSaya", {
+                              id: String(film.id),
+                              judul: film.judul,
+                              image: film.image,
+                              imageH: film.imageH,
+                              rating: film.rating,
+                            });
+                          }}
+                        />
+                        <Button
+                          className={
+                            "border rounded-[19px] p-[6px] size-[25px] flex justify-center items-center absolute right-[27.44px] bottom-[16.44px]"
+                          }
+                        >
+                          <img
+                            src={Volume}
+                            alt="mute/unmute"
+                            className="size-[17px]"
+                          />
+                        </Button>
                       </div>
                       <img
-                        src={"/Images/posterHorizontal/"+film.imageH}
+                        src={"/Images/posterHorizontal/" + film.imageH}
                         alt="film popUp"
                         className="w-full h-[190px] object-fill rounded-t-[6px]"
                       />
@@ -296,17 +288,17 @@ const Poster = ({
                         />
                         <div className="flex justify-center items-center h-[205px] gap-[10px]">
                           <img
-                            src={"/Images/posterVertical/"+film.image}
+                            src={"/Images/posterVertical/" + film.image}
                             alt="film popUp"
                             className="w-[88px] h-[132px] object-fill"
                           />
                           <img
-                            src={"/Images/posterVertical/"+film.image}
+                            src={"/Images/posterVertical/" + film.image}
                             alt="film popUp"
                             className="w-[88px] h-[132px] object-fill"
                           />
                           <img
-                            src={"/Images/posterVertical/"+film.image}
+                            src={"/Images/posterVertical/" + film.image}
                             alt="film popUp"
                             className="w-[88px] h-[132px] object-fill"
                           />

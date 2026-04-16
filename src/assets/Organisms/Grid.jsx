@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import DaftarSaya from "../Pages/DaftarSaya";
 import Button from "../Atoms/Button";
-import Add from "../Images/logoAdd.png";
 import Drop from "../Images/logoDropDown.png";
 import Play from "../Images/logoPlay.png";
 import Label from "../Atoms/Label";
@@ -17,7 +15,6 @@ const Grid = () => {
   let putFilm = useStoreFilm((state) => (state.putFilm))
   let deleteFilm = useStoreFilm((state) => (state.deleteFilm))
   const [hovered, setHovered] = useState(0);
-  const [rating, setRating] = useState(0);
 
   useEffect(() => {
     fetchDaftarSaya();
@@ -28,10 +25,8 @@ const Grid = () => {
       {daftarFilm.length == 0 ? <span className="font-[700] text-[15px] w-[100vw] h-[100vw] min-[1440px]:w-[100%] min-[1440px]:h-[100%] pt-[180px] flex justify-center items-center">== Belum ada film yang disimpan ==</span> : daftarFilm.map((film) => (
         <React.Fragment key={film.id}>
           <div
-            onMouseOver={() => 
-            {
-              setHovered(film.id)
-            }
+            onMouseOver={() => setHovered(film.id)
+            
               
             }
             onMouseLeave={() => setHovered(null)}
@@ -69,7 +64,7 @@ const Grid = () => {
                     <Button
                       isi="Remove"
                       className={
-                        "w-[55px] h-[25px] text-[12px] min-[1440px]:w-[102px] min-[1440px]:h-[42px] min-[1440px]:text-[16px] font-[700] flex justify-center bg-[#FF5B3A] items-center border-solid border-[#9D9EA1] rounded-[48px]"
+                        "w-[55px] h-[25px] text-[12px] min-[1440px]:w-[102px] min-[1440px]:h-[42px] min-[1440px]:text-[16px] font-[700] flex justify-center bg-[#FF5B3A] items-center border-solid border-[#9D9EA1] rounded-[48px] cursor-pointer"
                       }
                       onClick={() => {
                         deleteFilm(film.id,film.idDaftarSaya)
@@ -89,7 +84,6 @@ const Grid = () => {
                     }
                   />
                 </div>
-                {/* <div className="h-[35px] w-full flex justify-between items-center font-[700] text-[18px] text-[#C1C2C4] gap-[19.43px]"> */}
                 <div className="h-[20px] min-[1440px]:h-[35px] w-full flex justify-between items-center font-[700] text-[14px] min-[1440px]:text-[18px] text-[#C1C2C4] gap-[19.43px]">
                   <div className="flex justify-between items-center gap-[10px] min-[1440px]:gap-[35px]">
                     <Label
@@ -110,7 +104,7 @@ const Grid = () => {
                         putFilm(film.id,newNumber,film.idDaftarSaya)
                       }}
                     >
-                      <img src={Left} alt="decrease" className={"size-[13px] min-[1440px]:size-[20px]"}/>
+                      <img src={Left} alt="decrease" className={"size-[13px] min-[1440px]:size-[20px] cursor-pointer"}/>
                     </Button>
                     {<span className="flex justify-center items-center px-[10px] min-[1440px]:px-[20px] min-[1440px]:size-[10px]">{film.rating}</span>}
                     <img src={Star} alt="RatingMovie" className="size-[15px] min-[1440px]:size-[20px]" />
@@ -123,7 +117,7 @@ const Grid = () => {
                         putFilm(film.id,newNumber,film.idDaftarSaya)
                       }} 
                     >
-                      <img src={Right} alt="increase" className={"size-[13px] min-[1440px]:size-[20px]"}/>
+                      <img src={Right} alt="increase" className={"size-[13px] min-[1440px]:size-[20px] cursor-pointer"}/>
                     </Button>
                   </div>
                 </div>

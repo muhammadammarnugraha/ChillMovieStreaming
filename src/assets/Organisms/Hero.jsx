@@ -1,5 +1,3 @@
-import React from "react";
-import Duty from "../Images/imagesDutyAfterSchool.png";
 import Label from "../Atoms/Label";
 import Button from "../Atoms/Button";
 import Information from "../Images/logoInformation.png";
