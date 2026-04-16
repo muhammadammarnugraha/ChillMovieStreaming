@@ -13,7 +13,7 @@ const handleSubmitLogin = (username, password, navigate) => {
     password: password,
   };
 
-  const registeredAccount = JSON.parse(localStorage.getItem("account"));
+  const registeredAccount = JSON.parse(localStorage.getItem("account")||`{"username":"", "password":""}`) 
   console.log(registeredAccount);
   if (
     (userData.username == registeredAccount.username,
