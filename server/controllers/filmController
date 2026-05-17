@@ -1,0 +1,60 @@
+const filmModel = require("../models/filmModel")
+
+const handleGetFilms = async (req,res) => {
+    try {
+        const films = await filmModel.getFilms();
+        res.json(films) 
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}
+
+const handleGetFilm = async (req,res) => {
+    try{
+        const { id } = req.params; 
+        const film = await filmModel.getFilm(id);
+        res.json(film) 
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}
+
+const handlePostFilm = async (req,res) => {
+    try {
+        const body = req.body;
+        const film = await filmModel.postFilm(body);
+        res.json(film)
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}
+
+const handleDeleteFilm = async (req,res) => {
+    try {
+        const { id } = req.params;
+        const film = await filmModel.deleteFilm(id);
+        const { id_film, judul_film } = film
+        res.send(`Film ${judul_film} dengan id ${id_film} berhasil dihapus`)
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}
+
+const handleUpdateFilm = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const body = req.body;
+        const film = await filmModel.updateFilm(id,body);
+        res.json(film)
+    } catch (error) {
+        res.status(500).send(error.message);
+    }    
+}
+
+module.exports = {
+    handleGetFilms,
+    handleGetFilm,
+    handlePostFilm,
+    handleDeleteFilm,
+    handleUpdateFilm
+}

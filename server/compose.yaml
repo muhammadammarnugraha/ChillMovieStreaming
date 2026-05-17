@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres
+    container_name: chillmovie
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: chilldb
+    ports:
+      - "5432:5432"
+    volumes:
+      # - chill_data:/var/lib/postgresql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+# volumes:
+#   chill_data:
