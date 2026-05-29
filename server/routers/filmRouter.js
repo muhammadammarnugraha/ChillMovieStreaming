@@ -1,15 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const {handleGetFilms,handlePostFilm,handleGetFilm,handleDeleteFilm,handleUpdateFilm} = require("../controllers/filmController");
+const {verifyAuth} = require("../middleware/auth"); 
+const { uploadFiles } = require("../middleware/multer");
 
-router.get("/",handleGetFilms);
 
-router.get("/:id",handleGetFilm)
 
-router.post("/",handlePostFilm)
+router.get("/", verifyAuth, handleGetFilms);
 
-router.delete("/:id",handleDeleteFilm)
+router.get("/:id", verifyAuth ,handleGetFilm)
 
-router.patch("/:id",handleUpdateFilm)
+router.post("/", verifyAuth, uploadFiles, handlePostFilm)
+
+router.delete("/:id", verifyAuth,handleDeleteFilm)
+
+router.patch("/:id", verifyAuth,handleUpdateFilm)
 
 module.exports = router;    

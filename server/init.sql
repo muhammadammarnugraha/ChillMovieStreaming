@@ -10,12 +10,14 @@ CREATE TABLE IF NOT EXISTS seriesfilm (
 
 CREATE TABLE IF NOT EXISTS users (
     id_pengguna SERIAL PRIMARY KEY,
+    nama_lengkap VARCHAR(255),
     nama_pengguna VARCHAR(255),
     kata_sandi VARCHAR(255),
     email VARCHAR(50),
     umur SMALLINT,
     gender CHARACTER(1),
-    alamat VARCHAR(255)
+    alamat VARCHAR(255),
+    token_verify VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS daftarsaya (
@@ -27,17 +29,18 @@ CREATE TABLE IF NOT EXISTS daftarsaya (
     CONSTRAINT fk_film FOREIGN KEY (id_film) REFERENCES seriesfilm(id_film) ON DELETE CASCADE
 );
 
-INSERT INTO seriesfilm (id_film, judul_film, rating, pembuat, tgl_rilis, imageh, imagev) VALUES
-(1, 'Alice in Borderland', 4.5, 'Hameda Asakuno', '2017-06-15', 'aliceInBorderlandHorizontal.png', 'aliceInBorderlandVertical'),
-(3, 'Avatar', 3.9, 'Jack Millers', '2012-05-04', 'avatarTheWayofWaterVertical.png', 'avatarTheWayofWaterHorizontal.png'),
-(2, 'All of Us Are Dead', 4.6, 'Lee Jae Kyo, Ham Nam Su', '2022-01-27', 'allOfUsAreDeadHorizontal.png', 'allOfUsAreDeadVertical.png')
+INSERT INTO seriesfilm (judul_film, rating, pembuat, tgl_rilis, imageh, imagev) VALUES
+('Alice in Borderland', 4.5, 'Hameda Asakuno', '2017-06-15', 'aliceInBorderlandHorizontal.png', 'aliceInBorderlandVertical'),
+('Avatar', 3.9, 'Jack Millers', '2012-05-04', 'avatarTheWayofWaterVertical.png', 'avatarTheWayofWaterHorizontal.png'),
+('All of Us Are Dead', 4.6, 'Lee Jae Kyo, Ham Nam Su', '2022-01-27', 'allOfUsAreDeadHorizontal.png', 'allOfUsAreDeadVertical.png')
 ON CONFLICT (id_film) DO NOTHING;
 
-INSERT INTO users (id_pengguna, nama_pengguna, kata_sandi, email, umur, gender, alamat) VALUES
-(27, 'Danielle', 'kubernatsets', 'yammyping@gmail.com', 23, 'P', 'Ohaio'),
-(28, 'Shirohige', 'kaizoku', 'onepiece@gmail.com', 59, 'L', 'waterseven'),
-(2, 'Budi Kantamso', 'budikeren123', 'budisantosc@gmail.com', 43, 'L', 'Jakarta'),
-(26, 'Ezekiel', 'blackholesupremacy', 'ezekiel321@gmail.com', 26, 'P', 'California')
+INSERT INTO users ( nama_lengkap, nama_pengguna, kata_sandi, email, umur, gender, alamat) VALUES
+('gabriela daielle', 'danielle441', 'kubernatsets', 'yammyping@gmail.com', 23, 'P', 'Ohaio'),
+('shirohige omatsu', 'shirohige312', 'kaizoku', 'onepiece@gmail.com', 59, 'L', 'Waterseven'),
+('budi kantamso trinojoyo negoro', 'budikantamso077', 'budikeren123', 'budisantosc@gmail.com', 43, 'L', 'Jakarta'),
+('rafli rathur rahman', 'ezekiel636', 'blackholesupremacy', 'ezekiel321@gmail.com', 26, 'P', 'California'),
+('faris sumawijaya', 'faiz555', 'kamenrider555', 'faizaction@gmail.com', 18, 'L', 'Tokyo')
 ON CONFLICT (id_pengguna) DO NOTHING;
 
 INSERT INTO daftarsaya (id_pengguna, id_film, rating_personal) VALUES

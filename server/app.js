@@ -19,6 +19,11 @@ app.use('/film', filmRouter);
 
 app.use(requestTime)
 
+app.use("/blog", (req,res) => {
+  const test = req.query
+  res.send(test)
+})
+
 // Start the server
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

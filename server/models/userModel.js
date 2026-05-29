@@ -1,36 +1,27 @@
-const pool = require("../config/config.js")
+const pool = require("../config/configDatabase.js")
 
 const getItems = async () => {
     const result = await pool.query('SELECT * FROM users');
     return result.rows;
 };
 
-// getItems().then(data => console.log("Hasil Testing Model:", data));
-
-const getItem = async (id) => { //byID
+const getItem = async (id) => { 
     const result = await pool.query(`SELECT * FROM users WHERE id_pengguna = ${id}`);
     return result.rows;
 };
 
-// getItem().then(data => console.log("Hasil Testing Model:", data));
-
-const postItem = async (body) => {
-    const {nama_pengguna, kata_sandi, email, umur, gender, alamat} = body
-    const result = await pool.query(`INSERT INTO users (nama_pengguna, kata_sandi, email, umur, gender, alamat) VALUES('${nama_pengguna}','${kata_sandi}','${email}',${umur},'${gender}','${alamat}') RETURNING *`)
+const postItem = async (body,tokenVerify) => {
+    const {nama_lengkap, nama_pengguna, kata_sandi, email, umur, gender, alamat} = body
+    const result = await pool.query(`INSERT INTO users (nama_lengkap, nama_pengguna, kata_sandi, email, umur, gender, alamat, token_verify) VALUES('${nama_lengkap}','${nama_pengguna}','${kata_sandi}','${email}',${umur},'${gender}','${alamat}', '${tokenVerify}') RETURNING *`)
     return result.rows[0]
 }
-// addFilm() 
 
 const deleteItem = async (id) => {
     const result = await pool.query(`DELETE FROM users WHERE id_pengguna = '${id}' RETURNING *`)
     return result.rows[0]
 }
 
-// deleteFilm()
-
 const updateItem = async (id,body) => {
-    const {nama_pengguna, kata_sandi, email, umur, gender, alamat} = body
-    const columnLength = Object.keys(body).length
     const queryParts = Object.keys(body).map((key) => `${key} = '${body[key]}'`).join(', ')
     const result = await pool.query(`UPDATE users SET ${queryParts} WHERE id_pengguna = ${id} RETURNING *`)
     return result.rows[0]
@@ -47,6 +38,17 @@ const postWatchList = async (id,body) => {
     return result.rows[0]
 }
 
+const getByEmail = async (body) => {
+    const {email} = body
+    const result = await pool.query(`SELECT * FROM users WHERE email = '${email}'`)
+    return result.rows[0]
+}
+
+const getVerifyToken = async (clientToken) => {
+    const result = await pool.query(`SELECT * FROM users WHERE token_verify = '${clientToken}'`)
+    return result.rows
+}
+
 module.exports = {
     getItems,
     getItem,
@@ -54,5 +56,7 @@ module.exports = {
     deleteItem,
     updateItem,
     getWatchList,
-    postWatchList
+    postWatchList,
+    getByEmail,
+    getVerifyToken
 }

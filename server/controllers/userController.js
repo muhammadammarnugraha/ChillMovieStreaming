@@ -1,4 +1,8 @@
 const userModel = require("../models/userModel")
+const bcrypt = require("../utils/bcrypt")
+const jwt = require("../utils/jsonwebtoken")
+const uuid = require("../utils/uuid")
+const nodemailer = require("../utils/sendMail")
 
 const handleGetItems = async (req,res) => {
     try {
@@ -22,8 +26,11 @@ const handleGetItem = async (req,res) => {
 const handlePostItem = async (req,res) => {
     try {
         const body = req.body;
-        const user = await userModel.postItem(body);
-        res.json(user)
+        body.kata_sandi = await bcrypt.hashPassword(body.kata_sandi)
+        const createToken = uuid.createToken()
+        await userModel.postItem(body,createToken);
+        const mailSent = await nodemailer.sendMail(body.email,createToken)
+        res.json(mailSent)
     } catch (error) {
         res.status(500).send(error.message);
     }
@@ -72,6 +79,39 @@ const handlePostDS = async (req, res) => {
     }
 }
 
+const handleLogin = async (req, res) => {
+    try {
+        const body = req.body
+        const user = await userModel.getByEmail(body)
+        if (!user) {
+            return res.status(401).send("Email atau Password Salah!")
+        }
+        if (await bcrypt.comparePassword(body.kata_sandi, user.kata_sandi) === false) {
+            return res.status(401).send("Email atau Password Salah!") 
+        } 
+        return res.status(200).json({
+            "status": "berhasil",
+            "user": user,
+            "token": await jwt.signToken(user)
+        }) 
+    } catch (error) {
+        // return res.json(user)
+        return res.status(500).send(error.message)
+    }
+}
+
+const handleVerifyEmail = async (req, res) => {
+    try {
+        const clientToken = req.query['token_verify']
+        const user = await userModel.getVerifyToken(clientToken)
+        console.log(user)
+        return (user.length > 0) ? res.status(200).send(`Email Verified Successfull`) : res.status(401).send(`Invalid Verification Token`)  
+        
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 module.exports = {
     handleGetItems,
     handleGetItem,
@@ -79,5 +119,7 @@ module.exports = {
     handleDeleteItem,
     handleUpdateItem,
     handleGetDS,
-    handlePostDS
+    handlePostDS,
+    handleLogin,
+    handleVerifyEmail
 }
