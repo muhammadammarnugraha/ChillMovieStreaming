@@ -22,5 +22,19 @@ Make sure you have the following installed:
 * Git
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/username-kamu/chill-movie.git](https://github.com/username-kamu/chill-movie.git)
-cd chill-movie
+git clone https://github.com/muhammadammar/ChillMovieStreaming.git
+cd ChillMovieStreaming
+```
+### 2. Go to Server Folder
+```bash
+cd server
+```
+###3. Run Docker desktop background and run the yaml file
+```bash
+docker compose up -d
+```
+###4. Run app file
+```bash
+npm/nodemon run app
+```
+###5. Use POSTMAN to testing endpoint
